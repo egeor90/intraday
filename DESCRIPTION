@@ -1,0 +1,11 @@
+Package: intraday
+Version: 1.1-0
+Date: 2018-08-11
+Title: Retrieve intraday financial data
+Authors@R: person("Ege", "Or", role = c("aut", "cre"),
+                     email = "arifegeor@gmail.com")
+Maintainer: Ege Or <arifegeor@gmail.com>
+Depends: R (>= 3.1.0), chron, data.table, rjson, jsonlite, tidyverse, xts
+Description: This package helps you to fetch minutely financial stock price data from https://iextrading.com source.
+License: GPL (>= 2)
+LazyData: true
