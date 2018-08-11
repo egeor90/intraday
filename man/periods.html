@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Change the period of an 'xts' dataset</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for periods"><tr><td>periods</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>Change the period of an 'xts' dataset</h2>
+
+<h3>Description</h3>
+
+<p>Transform the minutely intraday stock price data into different frequencies</p>
+
+
+<h3>Usage</h3>
+
+<pre>
+periods(dataset, k=10, on="minutes", xtsConvert=NULL, output="xts")
+
+</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>dataset</code></td>
+<td>
+<p>an 'ohlcv' dataset, must be 'xts' class. if not, 'xtsConvert = TRUE' can be used for transformation.</p>
+</td></tr>
+<tr valign="top"><td><code>on</code></td>
+<td>
+<p>the frequency of time period. must be an integer.</p>
+</td></tr>
+<tr valign="top"><td><code>k</code></td>
+<td>
+<p>time period. it can be used with following syntax: &quot;minutes&quot;, &quot;hours&quot;, &quot;days&quot; and &quot;months&quot;</p>
+</td></tr>
+<tr valign="top"><td><code>xtsConvert</code></td>
+<td>
+<p>data transformation into 'xts' class.</p>
+</td></tr>
+<tr valign="top"><td><code>output</code></td>
+<td>
+<p>the output class of periodic conversion data. it can be transformed into &quot;xts&quot;, data.&quot;frame&quot; and &quot;data.table&quot; classes.</p>
+</td></tr>
+</table>
+
+
+<h3>Examples</h3>
+
+<pre>
+# DO NOT RUN!
+# conversion of 1-min Apple Inc. stock prices into 10-min
+aapl &lt;- intraday_live("aapl"),
+aapl_10min &lt;- periods(aapl, k=10, on="minutes")
+
+# minutely data to hourly data
+aapl &lt;- intraday_live("aapl"),
+aapl_10min &lt;- periods(aapl, k=1, on="hours")
+
+
+# convert from a 'data.table' minutely data into hourly 'xts' data.
+csco_dt &lt;- intraday_live(stock="csco", type="data.table")
+csco_1h &lt;- periods(csco_dt, k=1, on="hours", xtsConvert = TRUE)
+csco_1h_df &lt;- periods(csco_dt, k=1, on="hours", xtsConvert = TRUE, output="data.frame")
+</pre>
+
+
+</body></html>
