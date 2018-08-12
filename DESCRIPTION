@@ -1,5 +1,5 @@
 Package: intraday
-Version: 1.1-2
+Version: 1.1-3
 Date: 2018-08-11
 Title: Retrieve intraday financial data
 Authors@R: person("Ege", "Or", role = c("aut", "cre"),
