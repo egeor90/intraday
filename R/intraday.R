@@ -63,7 +63,7 @@ intraday_live <- function(stock,type="xts"){
 
   data_ <- data.frame(Reduce(rbind, data_))
 
-  if(colnames(data_) %in% c("open","close")){
+  if(any(colnames(data_) %in% c("open","close"))){
     data_ <- data_[colnames(data_) %in% c("date","minute","open","marketHigh","marketLow","close","volume")]
     data_[,1:ncol(data_)] <- apply(data_[,1:ncol(data_)], 2, function(x) as.vector(unlist(x)))
 
